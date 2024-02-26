@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   end
 
   def show
-    @lists = List.find(params[:id])
+    @list = List.find(params[:id])
   end
 
   def new
@@ -12,7 +12,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = Restaurant.new(list_params)
+    @list = List.new(list_params)
 
     if @list.save
       redirect_to @list, notice: "List created."
@@ -23,6 +23,6 @@ class ListsController < ApplicationController
 
   private
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :image_url)
   end
 end
